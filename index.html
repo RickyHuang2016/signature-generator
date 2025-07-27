@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Signature Generator</title>
+  <style>
+    @font-face {
+      font-family: 'Allura';
+      src: url('https://cdn.shopify.com/s/files/1/0675/7698/7937/files/Allura-Regular.woff2?v=1753586413') format('woff2');
+    }
+    @font-face {
+      font-family: 'Lateef';
+      src: url('https://cdn.shopify.com/s/files/1/0675/7698/7937/files/Lateef-Regular.woff2?v=1753586413') format('woff2');
+    }
+    @font-face {
+      font-family: 'LateefBold';
+      src: url('https://cdn.shopify.com/s/files/1/0675/7698/7937/files/Lateef-ExtraBold.woff2?v=1753586413') format('woff2');
+    }
+    @font-face {
+      font-family: 'Scheherazade';
+      src: url('https://cdn.shopify.com/s/files/1/0675/7698/7937/files/ScheherazadeNew-Regular.woff2?v=1753586413') format('woff2');
+    }
+    @font-face {
+      font-family: 'Amiri';
+      src: url('https://cdn.shopify.com/s/files/1/0675/7698/7937/files/Amiri-Regular.woff2?v=1753586413') format('woff2');
+    }
+    @font-face {
+      font-family: 'AmiriBold';
+      src: url('https://cdn.shopify.com/s/files/1/0675/7698/7937/files/Amiri-Bold.woff2?v=1753586413') format('woff2');
+    }
+
+    body {
+      font-family: sans-serif;
+      background: #fdfdfd;
+      padding: 2em;
+      text-align: center;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    input, select {
+      font-size: 1em;
+      padding: 0.5em;
+      margin: 0.5em;
+    }
+
+    .preview {
+      margin-top: 2em;
+      padding: 1em;
+      min-height: 100px;
+      font-size: 2.5em;
+      border: 1px dashed #ccc;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Online Signature Generator</h1>
+  <p>Type your name and choose a style below:</p>
+
+  <input type="text" id="nameInput" placeholder="Enter your name" />
+  <select id="fontSelector">
+    <option value="Allura">Allura</option>
+    <option value="Lateef">Lateef</option>
+    <option value="LateefBold">Lateef Bold</option>
+    <option value="Scheherazade">Scheherazade</option>
+    <option value="Amiri">Amiri</option>
+    <option value="AmiriBold">Amiri Bold</option>
+  </select>
+
+  <div class="preview" id="signaturePreview">Your Signature</div>
+
+  <script>
+    const nameInput = document.getElementById('nameInput');
+    const fontSelector = document.getElementById('fontSelector');
+    const preview = document.getElementById('signaturePreview');
+
+    function updateSignature() {
+      const name = nameInput.value.trim() || 'Your Signature';
+      const font = fontSelector.value;
+      preview.style.fontFamily = font;
+      preview.textContent = name;
+    }
+
+    nameInput.addEventListener('input', updateSignature);
+    fontSelector.addEventListener('change', updateSignature);
+    window.onload = updateSignature;
+  </script>
+
+</body>
+</html>
